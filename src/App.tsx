@@ -1,11 +1,8 @@
-import { useState } from 'react'
 import './App.css'
-import {GravityButton} from '@gravity/web-components-react';
 import {SearchByCategory} from "./components/searchByCategoryOverview/SearchByCategory.tsx";
 import {SearchByTrending} from "./components/searchByTrendingOverview/SearchByTrending.tsx";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
