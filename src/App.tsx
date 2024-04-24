@@ -1,12 +1,13 @@
 import './App.css'
 import {SearchByCategory} from "./components/searchByCategoryOverview/SearchByCategory.tsx";
 import {SearchByTrending} from "./components/searchByTrendingOverview/SearchByTrending.tsx";
+import {GravityHeading, GravityText} from "@gravity/web-components-react";
 
 function App() {
 
   return (
     <>
-      <h1>Dora the Explorer</h1>
+      <GravityHeading size={'xx-large'} weight={'bold'}>Dora the Explorer</GravityHeading>
       <div className="wrapper" style={{
         display: 'flex',
         flexDirection: 'row',
