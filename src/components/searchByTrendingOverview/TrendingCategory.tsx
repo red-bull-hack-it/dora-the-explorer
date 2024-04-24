@@ -23,7 +23,7 @@ export const TrendingCategory: FC<TrendingCategoryProps> = (({ categoryName, sub
   return (
     <div style={{ textAlign: 'start', display: 'flex', flexDirection: 'column', gap: '8px' }}>
       <GravityHeading size={'medium'} weight={'bold'}>{categoryName}</GravityHeading>
-      <div style={{ display: 'flex', gap: '8px', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', gap: '8px', flexDirection: 'row' }}>
         {subCategories.map(({ heading, volume, growth }) => {
           return <TrendingCategoryCard heading={heading} volume={volume} growth={growth}/>
         })}

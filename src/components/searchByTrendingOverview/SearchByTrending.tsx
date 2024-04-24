@@ -9,7 +9,6 @@ export const SearchByTrending: FC<SearchByTrendingProps> = (() => {
     display: 'flex',
     flexDirection: 'column',
     gap: '24px',
-    height: '480px',
   }}>
       <TrendingCategory categoryName={'Trending in Sports'} subCategories={MOCKED_SUBCATEGORIES}/>
       <TrendingCategory categoryName={'Trending in Culture'} subCategories={MOCKED_SUBCATEGORIES}/>
