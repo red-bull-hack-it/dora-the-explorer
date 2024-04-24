@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {TrendingCategoryCard} from "./TrendingCategoryCard.tsx";
+import {MOCKED_SUBCATEGORIES, TrendingCategory} from "./TrendingCategory.tsx";
 
 interface SearchByTrendingProps {}
 
@@ -8,15 +8,11 @@ export const SearchByTrending: FC<SearchByTrendingProps> = (() => {
     <div style={{
     display: 'flex',
     flexDirection: 'column',
-    gap: '16px',
+    gap: '24px',
     height: '480px',
-    borderRight: 'solid 4px',
-    borderColor: '#EFEFEF',
-    paddingRight: '32px',
   }}>
-      <TrendingCategoryCard heading={'Trending in Sports'} volume={'2.9K'} growth={'+9500%'}/>
-      <TrendingCategoryCard heading={'Trending in Culture'} volume={'2.9K'} growth={'+9500%'}/>
-      <TrendingCategoryCard heading={'Focus Trends in 2024'} volume={'2.9K'} growth={'+9500%'}/>
+      <TrendingCategory categoryName={'Trending in Sports'} subCategories={MOCKED_SUBCATEGORIES}/>
+      <TrendingCategory categoryName={'Trending in Culture'} subCategories={MOCKED_SUBCATEGORIES}/>
     </div>
   );
 })
