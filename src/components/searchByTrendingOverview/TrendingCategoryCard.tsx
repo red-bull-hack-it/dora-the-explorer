@@ -6,14 +6,15 @@ import {
   GravityIcon,
   GravityText
 } from "@gravity/web-components-react";
+import {SearchByTrendingProps} from "./SearchByTrending.tsx";
 
-interface TrendingCategoryCardProps {
+interface TrendingCategoryCardProps extends Pick<SearchByTrendingProps, 'setSubcategory'> {
   heading: string;
   volume: string;
   growth: string;
 }
 
-export const TrendingCategoryCard: FC<TrendingCategoryCardProps> = (({ heading, volume, growth}) => {
+export const TrendingCategoryCard: FC<TrendingCategoryCardProps> = (({ heading, volume, growth, setSubcategory}) => {
   return (
     <GravityCard type="vertical">
       <div slot="heading">
@@ -46,7 +47,9 @@ export const TrendingCategoryCard: FC<TrendingCategoryCardProps> = (({ heading, 
           <GravityButton type="secondary" size="small">
             Explore
           </GravityButton>
-          <GravityButton type="primary" size="small">
+          <GravityButton type="primary" size="small" onClick={() => setSubcategory({
+            growth, heading, volume
+          })}>
             Create Content
           </GravityButton>
         </div>
