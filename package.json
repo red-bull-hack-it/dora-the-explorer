@@ -10,20 +10,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/express": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
     "@gravity/foundation": "^2.0.0",
     "@gravity/web-components-react": "5.2.0",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "axios": "^1.6.8",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "express": "^4.19.2",
+    "http-proxy-middleware": "^3.0.0",
+    "openai": "^4.38.3",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
   }
