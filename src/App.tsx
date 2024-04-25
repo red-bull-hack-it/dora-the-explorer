@@ -54,7 +54,7 @@ function App() {
               <SearchByTrending setSubcategory={setSubCategory} setCategory={setCategory} />
             }
           </div>
-          <p className="read-the-docs" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
+          <p className="read-the-docs" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', paddingBottom: '42px' }}>
             <GravityIcon name={'warning-outline'} size={'medium'} color={'dark-muted'} /> With generative AI everything is 100% true and you can trust it every time
           </p>
         </div>
