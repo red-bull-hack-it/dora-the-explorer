@@ -1,5 +1,5 @@
 import { SubCategory } from "../searchByTrendingOverview/TrendingCategory.tsx";
-import {FC, useCallback, useEffect, useState} from "react";
+import {FC, useCallback, useState} from "react";
 import { MicroTrend } from "../../utils/types.ts";
 import { createPrompt } from "../../utils/create-prompt.ts";
 import { MessageContainer } from "./MessageContainer.tsx";
@@ -48,10 +48,10 @@ export const ChatContainer: FC<ChatContainerProps> = ({ subcategory, microTrend 
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', overflow: 'hidden' }}>
-      <div style={{ maxWidth: '60%', display: 'flex', gap: '8px', flexDirection: 'column', textAlign: 'start', overflow: 'hidden' }}>
-        <GravityHeading size={'large'} weight={'bold'}>Chat with Dora</GravityHeading>
+      <div style={{ maxWidth: '100%', display: 'flex', gap: '8px', flexDirection: 'column', textAlign: 'start', overflow: 'hidden' }}>
+        <GravityHeading size={'x-large'} weight={'bold'} style={{ paddingBottom: '24px' }}>Chat with Dora</GravityHeading>
         {renderInput ?
-          <ChatInputContainer prompt={promptString} setPrompt={setPromptString} sendPrompt={(text) => fetchOpenAiChat()} /> :
+          <ChatInputContainer prompt={promptString} setPrompt={setPromptString} sendPrompt={() => fetchOpenAiChat()} /> :
           <MessageContainer message={promptString} userType={'user'} />
         }
 

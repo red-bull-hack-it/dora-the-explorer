@@ -23,10 +23,10 @@ export const MOCKED_SUBCATEGORIES: SubCategory[] = [
 export const TrendingCategory: FC<TrendingCategoryProps> = (({ categoryName, subCategories, setSubcategory}) => {
   return (
     <div style={{ textAlign: 'start', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-      <GravityHeading size={'medium'} weight={'bold'}>{categoryName}</GravityHeading>
+      <GravityHeading size={'x-large'} weight={'bold'} style={{ paddingBottom: '24px' }}>{categoryName}</GravityHeading>
       <div style={{ display: 'flex', gap: '8px', flexDirection: 'row' }}>
-        {subCategories.map(({ heading, volume, growth }) => {
-          return <TrendingCategoryCard heading={heading} volume={volume} growth={growth} setSubcategory={setSubcategory} />
+        {subCategories.map(({ heading, volume, growth }, index) => {
+          return <TrendingCategoryCard heading={heading} volume={volume} growth={growth} setSubcategory={setSubcategory} src={index + 1}/>
         })}
       </div>
       <div style={{ marginTop: '8px', alignSelf: 'center' }}>

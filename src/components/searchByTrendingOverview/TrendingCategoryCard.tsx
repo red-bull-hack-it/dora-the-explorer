@@ -12,38 +12,45 @@ interface TrendingCategoryCardProps extends Pick<SearchByTrendingProps, 'setSubc
   heading: string;
   volume: string;
   growth: string;
+  src: number;
 }
 
-export const TrendingCategoryCard: FC<TrendingCategoryCardProps> = (({ heading, volume, growth, setSubcategory}) => {
+export const TrendingCategoryCard: FC<TrendingCategoryCardProps> = (({ heading, volume, growth, setSubcategory, src}) => {
   return (
-    <GravityCard type="vertical">
+    <GravityCard type="vertical" imgSrc={`graph-${src}.png`}>
       <div slot="heading">
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '256px' }}>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          width: '256px'
+        }}>
           <GravityHeading size={'small'} weight={'bold'}>{heading}</GravityHeading>
-          <GravityCategoryBadge category={'blueberry'} size={'small'}>Exploding</GravityCategoryBadge>
         </div>
       </div>
-      <div slot="image" style={{display: 'grid', placeContent: 'center'}}>
-        <GravityIcon name={'trending'} size="xx-large" color="light"></GravityIcon>
+      <div slot="content">
+        <GravityText color={'dark-subtle'} weight={'regular'} size="x-small">
+          {'Some subheading'}
+        </GravityText>
       </div>
-      <div slot="meta" style={{display: 'flex', gap: '8px'}}>
-        <div style={{display: 'flex', gap: '4px', alignItems: 'center'}}>
-          <GravityText color="dark-subtle" size="xx-small">
-            Volume:
-          </GravityText>
+      <div slot="meta">
+        <div style={{display: 'flex', gap: '8px', flexDirection: 'row', paddingBottom: '12px'}}>
           <GravityCategoryBadge category={'tonic'} size={'small'}>
-            {volume}
+            Volume:
+            <GravityText color="dark" weight={'bold'} size="xx-small">
+              {' ' + volume}
+            </GravityText>
           </GravityCategoryBadge>
-        </div>
-        <div style={{display: 'flex', gap: '4px', alignItems: 'center'}}>
-          <GravityText color="dark-subtle" size="xx-small">
-            Growth:
-          </GravityText>
           <GravityCategoryBadge category={'lime'} size={'small'}>
-            {growth}
+            <GravityIcon name='trending' style={{marginRight: '2px'}}></GravityIcon>
+            Growth:
+            <GravityText color="dark" weight={'regular'} size={'xx-small'}>
+              {' ' + growth}
+            </GravityText>
           </GravityCategoryBadge>
         </div>
-        <div slot="cta" style={{ display: 'flex', gap: '8px'}}>
+        <div slot="cta" style={{display: 'flex', gap: '8px'}}>
           <GravityButton type="secondary" size="small">
             Explore
           </GravityButton>
