@@ -4,6 +4,7 @@ import { GravityButton, GravityHeading } from "@gravity/web-components-react";
 import { SearchByTrendingProps } from "./SearchByTrending.tsx";
 import sportsJson from '../../factories/sports.json';
 import travelJson from '../../factories/travel.json';
+import gamingJson from '../../factories/gaming.json';
 
 export interface SubCategory {
   heading: string;
@@ -50,6 +51,8 @@ const mapJson = (json: { total?: number; result: any; }) => json.result.map((spo
 
 const sportsMocked = mapJson(sportsJson)
 const travelMocked = mapJson(travelJson)
+const gamingMocked = mapJson(gamingJson)
+
 
 console.log(travelJson.result)
 
@@ -69,15 +72,9 @@ function formatNumber(num: number): string {
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const MOCKED_SUBCATEGORIES_SPORTS: SubCategory[] = [
-  ...sportsMocked
-  // { heading: 'Bassdash', volume: '2.9K', growth: '+9500%' },
-  // { heading: 'Padel Balls', volume: '2.9K', growth: '+9500%' },
-  // { heading: 'Owala', volume: '2.9K', growth: '+9500%' },
-]
-export const MOCKED_SUBCATEGORIES_CULTURE: SubCategory[] = [
-  ...travelMocked
-]
+export const MOCKED_SUBCATEGORIES_SPORTS: SubCategory[] = sportsMocked
+export const MOCKED_SUBCATEGORIES_CULTURE: SubCategory[] = travelMocked
+export const MOCKED_SUBCATEGORIES_GAMING: SubCategory[] = gamingMocked
 
 console.log(sportsJson)
 
