@@ -60,6 +60,7 @@ export const TrendingCategoryCard: FC<TrendingCategoryCardProps> = (({ heading, 
               growth, heading, volume
             });
             setCategory();
+            window.scrollTo(0, 0);
           }}>
             Create Content
           </GravityButton>

@@ -1,5 +1,5 @@
 import { SubCategory } from "../searchByTrendingOverview/TrendingCategory.tsx";
-import { FC, useCallback, useState } from "react";
+import {FC, useCallback, useEffect, useState} from "react";
 import { MicroTrend } from "../../utils/types.ts";
 import { createPrompt } from "../../utils/create-prompt.ts";
 import { MessageContainer } from "./MessageContainer.tsx";
@@ -12,7 +12,7 @@ import {
   GravityTabSet,
   GravityText
 } from "@gravity/web-components-react";
-import { ChatInputContainer } from "./ChatInputContainer.tsx";
+import {ChatInputContainer} from "./ChatInputContainer.tsx";
 
 interface ChatContainerProps {
   category: string | null;
@@ -38,7 +38,7 @@ const makeRequest = async (promptString: string) => {
 
 export const ChatContainer: FC<ChatContainerProps> = ({ subcategory, microTrend, category }) => {
   const [response, setResponse] = useState<OpenAI.Chat.Completions.ChatCompletion.Choice[]>([]);
-  const [promptString, setPromptString] = useState(createPrompt({ topic: subcategory?.heading || '', microTrends: microTrend }));
+  const [promptString, setPromptString] = useState(createPrompt({ topic: subcategory?.heading || '', microTrends: microTrend}));
 
   const [renderInput, setRenderInput] = useState<boolean>(true)
 
@@ -54,17 +54,25 @@ export const ChatContainer: FC<ChatContainerProps> = ({ subcategory, microTrend,
     fetchData();
   }, [subcategory, microTrend]);
 
+  useEffect(() => {
+    if (subcategory) {
+      const iframe = document.querySelector<HTMLElement>('#iframe-container')!;
+
+      iframe.style.display = 'none';
+    }
+  }, [])
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center', overflow: 'hidden' }}>
       <div style={{ maxWidth: '100%', display: 'flex', flexDirection: 'column', textAlign: 'start', overflow: 'hidden' }}>
-        <div className={'header'} style={{ backgroundColor: 'white', paddingInline: '40px', paddingBlock: '24px 20px', borderRadius: '24px 24px 0 0', borderBottom: 'solid 1px rgb(236,236,237)' }}>
+        <div className={'header'} style={{ backgroundColor: 'white', paddingInline: '40px', paddingBlock: '24px 20px', borderRadius: '24px 24px 0 0', borderBottom: 'solid 1px rgb(236,236,237)'}}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: 'white' }}>
             <GravityText color={'dark-subtle'}>Overview</GravityText>
             <GravityIcon name={'arrow-right-outline'} color={'dark-subtle'} />
             <GravityText color={'dark-subtle'}>{category}</GravityText>
           </div>
           <GravityHeading size={'x-large'} weight={'bold'}
-            style={{ paddingBottom: '24px' }}>{subcategory?.heading}</GravityHeading>
+                          style={{paddingBottom: '24px'}}>{subcategory?.heading}</GravityHeading>
         </div>
 
 
@@ -76,7 +84,7 @@ export const ChatContainer: FC<ChatContainerProps> = ({ subcategory, microTrend,
             <div style={{ display: 'flex', gap: '24px', flexDirection: 'column', marginTop: '24px' }}>
               {renderInput ?
                 <div style={{ paddingInline: '8px', paddingTop: '4px', backgroundColor: 'white', borderRadius: '12px' }}>
-                  <ChatInputContainer prompt={promptString} setPrompt={setPromptString} sendPrompt={() => fetchOpenAiChat()} />
+                  <ChatInputContainer prompt={promptString} setPrompt={setPromptString} sendPrompt={() => fetchOpenAiChat()}/>
                 </div>
                 :
                 <MessageContainer message={promptString} userType={'user'} />
