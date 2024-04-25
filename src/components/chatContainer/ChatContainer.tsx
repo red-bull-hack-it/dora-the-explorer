@@ -4,10 +4,11 @@ import { MicroTrend } from "../../utils/types.ts";
 import { createPrompt } from "../../utils/create-prompt.ts";
 import { MessageContainer } from "./MessageContainer.tsx";
 import OpenAI from "openai";
-import {GravityHeading, GravityLoading} from "@gravity/web-components-react";
+import {GravityHeading, GravityIcon, GravityLoading, GravityText} from "@gravity/web-components-react";
 import {ChatInputContainer} from "./ChatInputContainer.tsx";
 
 interface ChatContainerProps {
+  category: string | null;
   subcategory: SubCategory | null;
   microTrend: MicroTrend | null;
 }
@@ -28,7 +29,7 @@ const makeRequest = async (promptString: string) => {
   return completion.choices
 }
 
-export const ChatContainer: FC<ChatContainerProps> = ({ subcategory, microTrend }) => {
+export const ChatContainer: FC<ChatContainerProps> = ({ subcategory, microTrend, category }) => {
   const [response, setResponse] = useState<OpenAI.Chat.Completions.ChatCompletion.Choice[]>([]);
   const [promptString, setPromptString] = useState(createPrompt({ topic: subcategory?.heading || '', microTrends: microTrend}));
 
@@ -49,7 +50,13 @@ export const ChatContainer: FC<ChatContainerProps> = ({ subcategory, microTrend 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', overflow: 'hidden' }}>
       <div style={{ maxWidth: '100%', display: 'flex', gap: '8px', flexDirection: 'column', textAlign: 'start', overflow: 'hidden' }}>
-        <GravityHeading size={'x-large'} weight={'bold'} style={{ paddingBottom: '24px' }}>Chat with Dora</GravityHeading>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <GravityText color={'dark-subtle'}>Overview</GravityText>
+          <GravityIcon name={'arrow-right-outline'} color={'dark-subtle'} />
+          <GravityText color={'dark-subtle'}>{category}</GravityText>
+        </div>
+
+        <GravityHeading size={'x-large'} weight={'bold'} style={{ paddingBottom: '24px' }}>{subcategory?.heading}</GravityHeading>
         {renderInput ?
           <ChatInputContainer prompt={promptString} setPrompt={setPromptString} sendPrompt={() => fetchOpenAiChat()} /> :
           <MessageContainer message={promptString} userType={'user'} />

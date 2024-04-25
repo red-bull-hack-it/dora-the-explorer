@@ -3,17 +3,18 @@ import {MOCKED_SUBCATEGORIES, SubCategory, TrendingCategory} from "./TrendingCat
 
 export interface SearchByTrendingProps {
   setSubcategory: React.Dispatch<SetStateAction<SubCategory | null>>;
+  setCategory: React.Dispatch<SetStateAction<string | null>>;
 }
 
-export const SearchByTrending: FC<SearchByTrendingProps> = (({ setSubcategory }) => {
+export const SearchByTrending: FC<SearchByTrendingProps> = (({ setSubcategory, setCategory }) => {
   return (
     <div style={{
     display: 'flex',
     flexDirection: 'column',
     gap: '24px',
   }}>
-      <TrendingCategory categoryName={'Trending in Sports'} subCategories={MOCKED_SUBCATEGORIES} setSubcategory={setSubcategory}/>
-      <TrendingCategory categoryName={'Trending in Culture'} subCategories={MOCKED_SUBCATEGORIES} setSubcategory={setSubcategory}/>
+      <TrendingCategory categoryName={'Trending in Sports'} subCategories={MOCKED_SUBCATEGORIES} setSubcategory={setSubcategory} setCategory={setCategory}/>
+      <TrendingCategory categoryName={'Trending in Culture'} subCategories={MOCKED_SUBCATEGORIES} setSubcategory={setSubcategory} setCategory={setCategory} />
     </div>
   );
 })

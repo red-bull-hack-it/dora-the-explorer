@@ -13,9 +13,10 @@ interface TrendingCategoryCardProps extends Pick<SearchByTrendingProps, 'setSubc
   volume: string;
   growth: string;
   src: number;
+  setCategory: () => void;
 }
 
-export const TrendingCategoryCard: FC<TrendingCategoryCardProps> = (({ heading, volume, growth, setSubcategory, src}) => {
+export const TrendingCategoryCard: FC<TrendingCategoryCardProps> = (({ heading, volume, growth, setSubcategory, setCategory, src}) => {
   return (
     <GravityCard type="vertical" imgSrc={`graph-${src}.png`}>
       <div slot="heading">
@@ -54,9 +55,12 @@ export const TrendingCategoryCard: FC<TrendingCategoryCardProps> = (({ heading, 
           <GravityButton type="secondary" size="small">
             Explore
           </GravityButton>
-          <GravityButton type="primary" size="small" onClick={() => setSubcategory({
-            growth, heading, volume
-          })}>
+          <GravityButton type="primary" size="small" onClick={() => {
+            setSubcategory({
+              growth, heading, volume
+            });
+            setCategory();
+          }}>
             Create Content
           </GravityButton>
         </div>

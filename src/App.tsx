@@ -9,6 +9,7 @@ import {Navbar} from "./components/navbarContainer/Navbar.tsx";
 
 function App() {
   const [subCategory, setSubCategory] = useState<SubCategory | null>(null)
+  const [category, setCategory] = useState<string | null>(null)
 
   return (
     <>
@@ -23,9 +24,9 @@ function App() {
           maxWidth: '900px',
         }}>
           {subCategory ?
-            <ChatContainer subcategory={subCategory} microTrend={MICRO_TREND_EXAMPLE[0]}/>
+            <ChatContainer subcategory={subCategory} category={category} microTrend={MICRO_TREND_EXAMPLE[0]}/>
             :
-            <SearchByTrending setSubcategory={setSubCategory} />
+            <SearchByTrending setSubcategory={setSubCategory} setCategory={setCategory} />
           }
         </div>
         <p className="read-the-docs" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
