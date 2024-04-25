@@ -16,7 +16,8 @@ export const MessageContainer: FC<MessageContainerProps> = (({ message, userType
       gap: '6px',
       backgroundColor: userType === 'user' ? 'rgb(255,255,255)' : 'rgba(255,255,255,0.7)',
       padding: '24px',
-      borderRadius: '24px'
+      borderRadius: '24px',
+      overflow: 'hidden,'
     }}>
       <AvatarContainer userType={userType} />
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'start', textAlign: 'start' }}>

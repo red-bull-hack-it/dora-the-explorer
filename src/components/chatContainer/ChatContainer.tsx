@@ -4,7 +4,14 @@ import { MicroTrend } from "../../utils/types.ts";
 import { createPrompt } from "../../utils/create-prompt.ts";
 import { MessageContainer } from "./MessageContainer.tsx";
 import OpenAI from "openai";
-import {GravityHeading, GravityIcon, GravityLoading, GravityText} from "@gravity/web-components-react";
+import {
+  GravityHeading,
+  GravityIcon,
+  GravityLoading,
+  GravityTab,
+  GravityTabSet,
+  GravityText
+} from "@gravity/web-components-react";
 import {ChatInputContainer} from "./ChatInputContainer.tsx";
 
 interface ChatContainerProps {
@@ -49,25 +56,44 @@ export const ChatContainer: FC<ChatContainerProps> = ({ subcategory, microTrend,
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', overflow: 'hidden' }}>
-      <div style={{ maxWidth: '100%', display: 'flex', gap: '8px', flexDirection: 'column', textAlign: 'start', overflow: 'hidden' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-          <GravityText color={'dark-subtle'}>Overview</GravityText>
-          <GravityIcon name={'arrow-right-outline'} color={'dark-subtle'} />
-          <GravityText color={'dark-subtle'}>{category}</GravityText>
+      <div style={{ maxWidth: '100%', display: 'flex', flexDirection: 'column', textAlign: 'start', overflow: 'hidden' }}>
+        <div className={'header'} style={{ backgroundColor: 'white', paddingInline: '40px', paddingBlock: '24px 20px', borderRadius: '24px 24px 0 0', borderBottom: 'solid 1px rgb(236,236,237)'}}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: 'white' }}>
+            <GravityText color={'dark-subtle'}>Overview</GravityText>
+            <GravityIcon name={'arrow-right-outline'} color={'dark-subtle'} />
+            <GravityText color={'dark-subtle'}>{category}</GravityText>
+          </div>
+          <GravityHeading size={'x-large'} weight={'bold'}
+                          style={{paddingBottom: '24px'}}>{subcategory?.heading}</GravityHeading>
         </div>
 
-        <GravityHeading size={'x-large'} weight={'bold'} style={{ paddingBottom: '24px' }}>{subcategory?.heading}</GravityHeading>
-        {renderInput ?
-          <ChatInputContainer prompt={promptString} setPrompt={setPromptString} sendPrompt={() => fetchOpenAiChat()} /> :
-          <MessageContainer message={promptString} userType={'user'} />
-        }
 
-        {response.length === 0 && !renderInput ?
-          <GravityLoading size={'large'} /> :
-          response.map((message) => (
-            <MessageContainer message={message.message.content ?? 'DEFAULT'} userType={'assistant'} />
-          ))
-        }
+        <GravityTabSet selected="suggestions" indent={false}>
+          <GravityTab heading="Details" tab-id="id2">
+            <GravityText>Details TODO</GravityText>
+          </GravityTab>
+          <GravityTab heading="Content Suggestions" tab-id="suggestions">
+            <div style={{ marginTop: '20px' }}>
+              {renderInput ?
+                <div style={{ paddingInline: '8px', paddingTop: '4px', backgroundColor: 'white', borderRadius: '12px' }}>
+                  <ChatInputContainer prompt={promptString} setPrompt={setPromptString} sendPrompt={() => fetchOpenAiChat()}/>
+                </div>
+                :
+                <MessageContainer message={promptString} userType={'user'} />
+              }
+
+              {response.length === 0 && !renderInput ?
+                <div style={{ overflow: 'hidden' }}>
+                  <GravityLoading size={'large'} />
+                </div>
+                :
+                response.map((message) => (
+                  <MessageContainer message={message.message.content ?? 'DEFAULT'} userType={'assistant'} />
+                ))
+              }
+            </div>
+          </GravityTab>
+        </GravityTabSet>
       </div>
     </div>
   )
