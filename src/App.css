@@ -1,8 +1,21 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+.gradient-background {
+  background: linear-gradient(64.57deg, #00162B 0%, #002243 15.92%, #002F5C 52.31%, #004A91 74.17%);
+}
+
 #root {
-  max-width: 1280px;
+  /*max-width: 1280px;*/
   margin: 0 auto;
-  padding: 2rem;
+  /*padding: 2rem;*/
   text-align: center;
+  height: 100%;
 }
 
 .logo {
