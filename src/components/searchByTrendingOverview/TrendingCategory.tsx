@@ -87,9 +87,11 @@ export const TrendingCategory: FC<TrendingCategoryProps> = (({ categoryName, sub
           return <TrendingCategoryCard heading={heading} volume={volume} growth={growth} setSubcategory={setSubcategory} setCategory={() => setCategory(categoryName)} src={index + 1} />
         })}
       </div>
-      <div style={{ marginTop: '8px', alignSelf: 'center' }}>
-        <GravityButton type={'secondary'}>Load more</GravityButton>
-      </div>
+      {categoryName !== 'Trending in Bike' &&
+        <div style={{ marginTop: '8px', alignSelf: 'center' }}>
+          <GravityButton type={'secondary'}>Load more</GravityButton>
+        </div>
+      }
     </div>
   )
 })
