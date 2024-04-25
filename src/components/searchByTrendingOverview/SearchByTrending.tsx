@@ -12,6 +12,8 @@ export const SearchByTrending: FC<SearchByTrendingProps> = (({ setSubcategory, s
       display: 'flex',
       flexDirection: 'column',
       gap: '24px',
+      isolation: 'isolate',
+      zIndex: '0',
     }}>
       <TrendingCategory categoryName={'Trending in Sports'} subCategories={MOCKED_SUBCATEGORIES_SPORTS} setSubcategory={setSubcategory} setCategory={setCategory} />
       <TrendingCategory categoryName={'Trending in Travel'} subCategories={MOCKED_SUBCATEGORIES_CULTURE} setSubcategory={setSubcategory} setCategory={setCategory} />

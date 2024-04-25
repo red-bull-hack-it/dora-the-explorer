@@ -12,7 +12,8 @@ export const Navbar: FC<NavbarProps> = (() => {
       right: '0',
       top: '0',
       backgroundColor: 'white',
-      paddingInline: '34px'
+      paddingInline: '34px',
+      zIndex: '1',
     }}>
       {/*<GravityIcon name={''} />*/}
       <div style={{display: 'flex', alignItems: 'center', justifyContent: 'start', height: '100%', gap: '14px'}}>

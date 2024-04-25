@@ -14,7 +14,7 @@ export const MessageContainer: FC<MessageContainerProps> = (({ message, userType
       display: 'flex',
       flexDirection: 'row',
       gap: '6px',
-      backgroundColor: userType === 'user' ? 'rgb(255,255,255)' : 'rgba(255,255,255,0.7)',
+      backgroundColor: userType === 'user' ? 'rgb(255,255,255)' : 'rgb(255,255,255)',
       padding: '24px',
       borderRadius: '24px',
       overflow: 'hidden,'

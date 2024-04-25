@@ -73,7 +73,7 @@ export const ChatContainer: FC<ChatContainerProps> = ({ subcategory, microTrend,
             <GravityText>Details TODO</GravityText>
           </GravityTab>
           <GravityTab heading="Content Suggestions" tab-id="suggestions">
-            <div style={{ marginTop: '20px' }}>
+            <div style={{ display: 'flex', gap: '24px', flexDirection: 'column', marginTop: '24px' }}>
               {renderInput ?
                 <div style={{ paddingInline: '8px', paddingTop: '4px', backgroundColor: 'white', borderRadius: '12px' }}>
                   <ChatInputContainer prompt={promptString} setPrompt={setPromptString} sendPrompt={() => fetchOpenAiChat()}/>

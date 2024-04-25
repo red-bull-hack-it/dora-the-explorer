@@ -81,7 +81,7 @@ export const MOCKED_SUBCATEGORIES_CULTURE: SubCategory[] = [
 
 console.log(sportsJson)
 
-export const TrendingCategory: FC<TrendingCategoryProps> = (({ categoryName, subCategories, setSubcategory }) => {
+export const TrendingCategory: FC<TrendingCategoryProps> = (({ categoryName, subCategories, setSubcategory, setCategory }) => {
   return (
     <div style={{ textAlign: 'start', display: 'flex', flexDirection: 'column', gap: '8px' }}>
       <GravityHeading size={'x-large'} weight={'bold'} style={{ paddingBottom: '24px' }}>{categoryName}</GravityHeading>
