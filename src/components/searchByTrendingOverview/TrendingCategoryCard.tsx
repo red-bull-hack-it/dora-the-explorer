@@ -47,7 +47,7 @@ export const TrendingCategoryCard: FC<TrendingCategoryCardProps> = (({ heading, 
             <GravityIcon name='trending' style={{marginRight: '2px'}}></GravityIcon>
             Growth:
             <GravityText color="dark" weight={'regular'} size={'xx-small'}>
-              {' ' + growth}
+              {' ' + growth + '%'}
             </GravityText>
           </GravityCategoryBadge>
         </div>

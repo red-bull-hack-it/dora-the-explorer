@@ -17,22 +17,22 @@ function App() {
       <div style={{ paddingLeft: '289px', height: '100%' }}>
         <aside style={{ position: 'fixed', width: '289px', height: '100%', left: '0', top: '48px', paddingBlock: '24px', paddingInline: '12px' }} className="gradient-background">
           <div style={{display: 'flex', flexDirection: 'column', alignItems: 'start'}}>
-            <div style={{paddingInline: '16px', paddingBlock: '16px'}}>
+            <div style={{paddingInline: '16px', paddingBlock: '16px' }}>
               <GravityText color={'light-subtle'} weight={'regular'} size="x-small">
                 {'Explore'}
               </GravityText>
             </div>
-            <div style={{paddingInline: '16px', paddingBlock: '16px', backgroundColor: 'rgb(1,25,50)', width: '241px', textAlign: 'start', borderRadius: '12px'}}>
+            <div style={{paddingInline: '16px', paddingBlock: '16px', backgroundColor: 'rgb(1,25,50)', width: '241px', textAlign: 'start', borderRadius: '12px', cursor: 'pointer'}}>
               <GravityText color={'light'} weight={'bold'} size="medium">
                 {'Overview'}
               </GravityText>
             </div>
-            <div style={{paddingInline: '16px', paddingBlock: '16px', backgroundColor: ''}}>
+            <div style={{paddingInline: '16px', paddingBlock: '16px', cursor: 'pointer' }}>
               <GravityText color={'light'} weight={'medium'} size="medium">
                 {'Explore'}
               </GravityText>
             </div>
-            <div style={{paddingInline: '16px', paddingBlock: '16px'}}>
+            <div style={{paddingInline: '16px', paddingBlock: '16px', cursor: 'pointer' }}>
               <GravityText color={'light'} weight={'medium'} size="medium">
                 {'Trend Analysis'}
               </GravityText>
